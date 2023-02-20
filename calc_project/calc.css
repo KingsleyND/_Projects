@@ -11,7 +11,7 @@ body{
 .calc-body{
     display: flex;
     justify-content: center;
-    background-color: rgb(120, 105, 122);
+    background-color: rgb(125, 86, 161);
     width: 440px;
     height: 500px;
     padding: 7px;
@@ -20,7 +20,7 @@ body{
 
 }
 .calc-content{
-    background-color: rgba(197, 142, 248,0.1);
+    background-color: rgb(125, 86, 161);
     
 }
 .display-space{
@@ -58,8 +58,8 @@ button{
         transition: font-size 0s ease;
         transition: padding 0 ease;
 }
-.buttons:hover{
-    background-color:rgb(87, 182, 219);;
+.button:hover{
+    background-color:rgb(87, 182, 219);
     font-size: 35px;
     padding: 15px;
 }
