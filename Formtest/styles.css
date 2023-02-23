@@ -1,0 +1,13 @@
+body{
+    background-image: url(images/waves_background.jpg);
+    background-repeat: no-repeat;
+    background-size:40vw 100vh ;
+    
+
+}
+
+.logo-div{
+    width: 70vw;
+    height: 50px;
+    background-color: aqua;
+}
