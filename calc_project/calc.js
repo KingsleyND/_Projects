@@ -93,9 +93,15 @@ buttons.forEach(function (button){
             if(txt == "="){
                 number2 = parseInt(digitsB);
                  clear;
-                display.innerHTML=  operate(operator,number1,number2)
+                let result = operate(operator,number1,number2);
+                display.innerHTML=  result;
                 console.log(`number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`)
-                console.log(operate(operator,number1,number2))
+        digitsA = result;
+        digitsB = "";
+        number1= undefined;
+        number2= undefined;
+        operator= undefined;
+                
             }  
         }
         if(txt =='C'){
