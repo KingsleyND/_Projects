@@ -36,14 +36,28 @@ let number2;
 let operator;
 //  operate(operator,number1,number2)
 
+
+
 const clear = () =>{
     display.innerHTML='';
+
+}
+const reset = (digitsA,digitsB,number1) =>{
+    display.innerHTML='';
+     digitsA = "";
+     digitsB = "";
+ number1= undefined;
+let number2= undefined;
+let operator= undefined;
+console.log(`number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`)   
 }
 
 
 buttons.forEach(function (button){ 
+    
     const addText =() => {
         txt =  button.innerText;
+        console.log(txt);
         if (["+","-","÷","*"].includes(txt) ){
             number1 = parseInt(digitsA)
             display.append(txt)
@@ -64,14 +78,14 @@ buttons.forEach(function (button){
             }
             // console.log(operator)
             
-        }else if (number1===undefined){
+        }else if (number1===undefined && txt!='C'){
             digitsA+= txt;
             display.append(txt);
             
         }
-        // console.log(`number1=${number1} number2=${number2} operator=${operator}`)
+        console.log(`number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`)
         if (operator != undefined){
-            if(["+","-","÷","*","="].includes(txt)==false){
+            if(["+","-","÷","*","=","C"].includes(txt)==false){
             digitsB+= txt;
             display.append(txt);
             // console.log(digitsB)
@@ -80,17 +94,27 @@ buttons.forEach(function (button){
                 number2 = parseInt(digitsB);
                  clear;
                 display.innerHTML=  operate(operator,number1,number2)
+                console.log(`number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`)
                 console.log(operate(operator,number1,number2))
-            }else{
-                
-            }
+            }  
         }
-        
-        
-        
+        if(txt =='C'){
+            display.innerHTML='';
+            digitsA = "";
+            digitsB = "";
+        number1= undefined;
+        number2= undefined;
+        operator= undefined;
+    console.log(`number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`)   
+        }   
         
     }
+     
+
  button.addEventListener("click",addText);
+
+
+
   });
 
 
