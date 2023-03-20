@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(249, 255, 253);
+}
+
+#books{
+    display: flex;
+    border: 1px solid rgb(178, 18, 199);
+    width: fit-content;
+    padding: 10px;
+    justify-content: space-around;
+    gap: 10px;
+    
+}
+
+
+.book-card{
+    display: flex;
+    border: 1px solid rgb(29, 26, 231);
+    width: fit-content;
+    padding: 10px;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.book-card p{
+    display: flex;
+    border: 1px solid red;
+    padding: 10px;
+    font-size: 15px;
+    
+}
+

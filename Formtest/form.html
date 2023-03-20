@@ -35,7 +35,7 @@
           ad occaecat ea proident sunt nostrud ex nostrud incididunt.
         </p>
 
-        <form action="" method="post">
+        <form onsubmit="return checkPassword(this)" action="" method="post">
 
           <div class="form-div">
             <legend>Let's do this!</legend>
@@ -51,22 +51,23 @@
             </div>
             <div class="contact">
               <div>
-                <label for="email">EMAIL</label>
-                <input type="email" id="first_name" />
+                <label for="user_email">EMAIL</label>
+                <input type="email" id="user_email" name="user_email"" required />
               </div>
               <div>
                 <label for="phone_number">PHONE NUMBER</label>
-                <input type="number" id="phone_number" />
+                <input type="number" id="phone_number" name="phone_number" required />
               </div>
             </div>
             <div class="password">
               <div>
                 <label for="password">PASSWORD</label>
-                <input type="password" id="password" class="error" />
+                <input type="password" id="password" name="password"  class="error" required />
               </div>
               <div>
-                <label for="password">CONFIRM PASSWORD</label>
-                <input type="password" id="confirm_password" class="error" />
+                <label for ="confirm_password">CONFIRM PASSWORD</label>
+                <input type="password" id="confirm_password" n class="error" required />
+                <p id="noMatch">Passwords don't match</p>
               </div>
             </div>
           </div>

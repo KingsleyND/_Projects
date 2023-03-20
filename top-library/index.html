@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+</head>
+<body>
+<p>gfv</p>
+
+<form onsubmit="return addBookToLibrary(this)" action="" method="" class="">
+    <legend>Enter Book Information</legend>
+
+    <label for="name">Enter Title: </label>
+    <input type="text" name="name" id="name" required>
+
+    <label for="author">Enter Author: </label>
+    <input type="text" name="author" id="author" required>
+
+    <label for="pages">Enter number of pages: </label>
+    <input type="number" name="pages" id="pages" required>
+
+    
+        <label for= "read"> Have you read?</label>
+        <input type="radio" id="Yes" name="read" value="Yes" >
+        <label for="Yes">Yes</label>
+        <input type="radio" id="No" name="read" value="No" >
+        <label for="No">No</label>
+
+    <button type="button" onclick="addBookToLibrary();">Submit</button>
+</form>
+<h3>List</h3>
+<div id= "books">
+    <div class="book-card">
+        <p class="title">BOOK99</p>
+        <p class="author">Benny</p>
+        <p class="pages">YTS</p>
+        <p class="have-read">Yes</p>
+    </div>
+</div>
+
+
+<script src="app.js" defer></script>
+</body>
+</html>

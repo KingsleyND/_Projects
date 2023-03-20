@@ -18,7 +18,7 @@ function operate(operator, a, b) {
   return operator(a, b);
 }
 
-let buttons = document.querySelectorAll(".button");
+const buttons = document.querySelectorAll(".button");
 
 const display = document.querySelector(".display-space");
 
@@ -36,7 +36,7 @@ const clear = () => {
   display.innerHTML = "";
 };
 
-buttons.forEach(function (button) {
+buttons.forEach((button) => {
   const addText = () => {
     txt = button.innerText;
     console.log(txt);
@@ -57,25 +57,28 @@ buttons.forEach(function (button) {
         case "*":
           operator = multiply;
           break;
+        default:
+          clear();
       }
       // console.log(operator)
-    } else if (number1 === undefined && txt != "C") {
+    } else if (number1 === undefined && txt !== "C") {
       digitsA += txt;
       display.append(txt);
     }
     console.log(
-      `number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`
+      `number1=${number1} number2=${number2} operator=${operator} digitsA=${digitsA} digitsB=${digitsB}`,
     );
-    if (operator != undefined) {
-      if (["+", "-", "÷", "*", "=", "C"].includes(txt) == false) {
+
+    if (operator !== undefined) {
+      if (["+", "-", "÷", "*", "=", "C"].includes(txt) === false) {
         digitsB += txt;
         display.append(txt);
         // console.log(digitsB)
       }
-      if (txt == "=") {
+      if (txt === "=") {
         number2 = parseInt(digitsB);
-        clear;
-        let result = operate(operator, number1, number2);
+        clear();
+        const result = operate(operator, number1, number2);
         display.innerHTML = result;
 
         digitsA = result;
@@ -85,7 +88,7 @@ buttons.forEach(function (button) {
         operator = undefined;
       }
     }
-    if (txt == "C") {
+    if (txt === "C") {
       display.innerHTML = "";
       digitsA = "";
       digitsB = "";
@@ -98,4 +101,4 @@ buttons.forEach(function (button) {
   button.addEventListener("click", addText);
 });
 
-//srcElement .innerText
+// srcElement .innerText
