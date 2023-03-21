@@ -32,3 +32,11 @@ body{
     font-size: 15px;
 }
 
+.book-card button{
+    display: flex;
+    border: 1px solid red;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+}
+

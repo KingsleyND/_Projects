@@ -57,10 +57,22 @@ function addBookToLibrary() {
       readBook.className = "have-read";
       newBook.appendChild(readBook);
   
+      const removeBook = document.createElement("button");
+      removeBook.innerHTML = "Remove";
+      
+      // readBook.className = "have-read";
+      newBook.appendChild(removeBook);
+
+      removeBook.addEventListener("click", () =>{
+        newBook.remove();
+      })
+
     bookNumber +=1;
     }
+    // const removeBook = document.createElement("p");
+    
     console.log(myLibrary);
-  // }
+  // }  
   console.log("outside function")
   console.log(myLibrary);
 
