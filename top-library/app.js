@@ -9,22 +9,26 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-// const books = document.getElementById("books");
+// Stop default submit function
+
+// const submitButton = document.querySelector(".submit-class");
+
+// function submitClick(event) {
+//   event.preventDefault();
+// }
+// submitButton.addEventListener("click", submitClick);
+
 const books = document.createElement("div");
-  books.id = "books";
-  document.body.appendChild(books);
-  if (books.innerHTML === ""){
-    books.style.borderWidth = "0";
-  }
-
-  console.log(books.innerHTML);
-
-
+books.id = "books";
+document.body.appendChild(books);
+if (books.innerHTML === "") {
+  books.style.borderWidth = "0";
+}
 
 let bookNumber = 0;
+
 function addBookToLibrary() {
   books.style.borderWidth = "1px";
-  
 
   // Get input values
   const bookName = document.getElementById("name").value;
@@ -42,8 +46,7 @@ function addBookToLibrary() {
 
   myLibrary.push(Book1);
 
-  // for(let i = 0; i < myLibrary.length; i++){
-
+  // create divs
   const newBook = document.createElement("div");
   newBook.className = "book-card";
   books.appendChild(newBook);
@@ -68,6 +71,37 @@ function addBookToLibrary() {
   readBook.className = "have-read";
   newBook.appendChild(readBook);
 
+  // create Read toggle switch
+  const toggleLabel = document.createElement("label");
+  toggleLabel.className = "switch";
+
+  const toggleInput = document.createElement("input");
+  toggleInput.type = "checkbox";
+  toggleInput.name = "subscribe";
+  toggleInput.value = "on";
+  toggleLabel.appendChild(toggleInput);
+
+  const togglespan = document.createElement("span");
+  togglespan.className = "slider round";
+  toggleLabel.appendChild(togglespan);
+
+  newBook.appendChild(toggleLabel);
+
+
+  // toggle functionality
+
+toggleInput.addEventListener("click", ()=> {
+  console.log("clickeddd");
+  if (readBook.innerHTML ==="Haven't read"){
+    readBook.innerHTML = "Have read";
+  }else{
+    readBook.innerHTML = "Haven't read";
+  }
+});
+
+
+
+  // Remove button
   const removeBook = document.createElement("button");
   removeBook.innerHTML = "Remove";
 
@@ -76,9 +110,12 @@ function addBookToLibrary() {
 
   removeBook.addEventListener("click", () => {
     newBook.remove();
+
+    
+
+    
   });
 
   bookNumber += 1;
-  console.log(books.innerHTML);
+  
 }
-
