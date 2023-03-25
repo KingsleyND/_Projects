@@ -79,6 +79,10 @@ function addBookToLibrary() {
   toggleInput.type = "checkbox";
   toggleInput.name = "subscribe";
   toggleInput.value = "on";
+
+  if (readBook.innerHTML === "Have read") {
+    toggleInput.setAttribute("checked", "");
+  }
   toggleLabel.appendChild(toggleInput);
 
   const togglespan = document.createElement("span");
@@ -87,19 +91,16 @@ function addBookToLibrary() {
 
   newBook.appendChild(toggleLabel);
 
-
   // toggle functionality
 
-toggleInput.addEventListener("click", ()=> {
-  console.log("clickeddd");
-  if (readBook.innerHTML ==="Haven't read"){
-    readBook.innerHTML = "Have read";
-  }else{
-    readBook.innerHTML = "Haven't read";
-  }
-});
-
-
+  toggleInput.addEventListener("click", () => {
+    console.log("clickeddd");
+    if (readBook.innerHTML === "Haven't read") {
+      readBook.innerHTML = "Have read";
+    } else {
+      readBook.innerHTML = "Haven't read";
+    }
+  });
 
   // Remove button
   const removeBook = document.createElement("button");
@@ -110,12 +111,7 @@ toggleInput.addEventListener("click", ()=> {
 
   removeBook.addEventListener("click", () => {
     newBook.remove();
-
-    
-
-    
   });
 
   bookNumber += 1;
-  
 }
