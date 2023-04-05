@@ -14,9 +14,7 @@ function checkPassword(form) {
     } 
       alert("Password Match. Congratulations!");
       return true;
-    
-
-    
+  
   }
 // confirm_password.value;
 

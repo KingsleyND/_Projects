@@ -94,7 +94,6 @@ function addBookToLibrary() {
   // toggle functionality
 
   toggleInput.addEventListener("click", () => {
-    console.log("clickeddd");
     if (readBook.innerHTML === "Haven't read") {
       readBook.innerHTML = "Have read";
     } else {
