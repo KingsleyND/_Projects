@@ -8,12 +8,12 @@ const Gameboard = {gameboard:["","","",
                             //   "3","4","5"
                             //   "6","7","8"
 const Player = {};
-
+// const wC = Gameboard.gameboard;
 const gamePlay = {xo:0, checkWinner:()=>{
   const wC = Gameboard.gameboard;
-  const winCondition = {1:[wC[0],wC[4],wC[8]],2:[wC[0],wC[1],wC[2]],3:[wC[0],wC[3],wC[7]],
+  const winCondition = {1:[wC[0],wC[4],wC[8]],2:[wC[0],wC[1],wC[2]],3:[wC[0],wC[3],wC[6]],
                         4:[wC[1],wC[4],wC[7]],5:[wC[2],wC[4],wC[6]],6:[wC[2],wC[5],wC[8]],
-                        7:[wC[3],wC[4],wC[5]],8:[wC[6],wC[7],wC[8]]};
+                        7:[wC[3],wC[4],wC[5]],8:[wC[6],wC[7],wC[8]]}
           
               for(let i=1; i<10; i+=1){
               
