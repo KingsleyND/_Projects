@@ -11,12 +11,12 @@
 <body>
     <div class="enter-names">
         <label for="name">(X) Enter Name: </label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="p1name" required>
 
     <label for="player2Name">(O) Enter Name: </label>
-    <input type="text" name="player2Name" id="author" required>
+    <input type="text" name="player2Name" id="p2name" required>
     <button type="button" onclick="gamePlay.startGame();">Start</button>
-    <button class="reset" type="button" onclick="gamePlay.reset();">Reset</button>
+    <button class="reset-game" type="button" onclick="window.location.reload();">Reset Game</button>
     </div>
 
     </div>
@@ -31,28 +31,28 @@
     <div class="input" data-key="7"></div>
     <div class="input" data-key="8"></div>
 </div>   
-
+<button class="reset" type="button" onclick="gamePlay.reset();">Reset Board</button>    
 <div class="players">
     <div class="player" id="player-1">
-    <h3>player 1</h3>
-    <div class="score">
-        <h3>Score:</h3>
-        <h3 id="player-1-score">2</h3>
-    </div>
+        <h3 id="p1-name">player</h3>
+        <div class="score">
+            <h3 class="p1score">Score: </h3>
+            <h3 id="player-1-score">0</h3>
+        </div>
     </div>
     <div class="player" id="player-2"">
-        <h3>player 2</h3>
+        <h3 id="p2-name">player</h3>
         <div class="score">
-            <h3>Score:</h3>
-            <h3 id="player-1-score">2</h3>
+            <h3 class="p2score">Score: </h3>
+            <h3 id="player-2-score">0</h3>
         </div>
         
     </div>
 </div>
 
 <div class="winner">
-    <p class="player-name"> This player</p>
-    <p> Won</p>
+    <p class="player-name"></p>
+    
 </div>
 
     <script src="app.js" ></script>
