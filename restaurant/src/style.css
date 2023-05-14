@@ -17,7 +17,7 @@ body {
 }
 
 .home-container {
-  background-color: rgb(255, 134, 134);
+  background-color: rgb(252, 145, 145);
   width: 60vw;
   display: flex;
   flex-direction: column;

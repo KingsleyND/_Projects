@@ -13,51 +13,49 @@ const homeButton = document.getElementById("home");
 // content.appendChild(menuContent());
 content.appendChild(HomeContent());
 
-
-const homeDisplay = document.getElementById("home-container");
-const menuDisplay = document.getElementById("menu-content");
-// const contact = document.getElementById("contact");
-
-
-
-
-
-// const homeDisplayed = document.getElementById("home-container");
-
-
-
+const display = { 
+homeDisplay : document.getElementById("home-container"),
+menuDisplay: document.getElementById("menu-content"),
+}
 
 
 
 const displayMenu = ()=>{
-    
-    if (menuDisplay === null){
-        if (homeDisplay){
-            homeDisplay.remove();
+    console.log(display.menuDisplay)
+    if (display.menuDisplay === null){
+        if (display.homeDisplay){
+            display.homeDisplay.remove();
             
         }
+        
+        content.appendChild(menuContent()); 
+        display.menuDisplay = document.getElementById("menu-content");
+        display.homeDisplay = document.getElementById("home-container");
     } 
-    content.appendChild(menuContent());
+    
 } ;
 
-// const displayHome = ()=>{
-//     if(homeDisplay == null){
-//         if(menuDisplay){
-//             menuDisplay.remove();
-//         }
-//     }
-//     content.appendChild(HomeContent())
-// }
+const displayHome = ()=>{
+    console.log("clicked home");
+    console.log(display.homeDisplay)
+    if(display.homeDisplay == null){
+        console.log("NLL")
+        if(display.menuDisplay){
+            display.menuDisplay.remove();
+        }
+    
+    content.appendChild(HomeContent())
+    display.menuDisplay = document.getElementById("menu-content");
+    display.homeDisplay = document.getElementById("home-container");
+    }
+}
 
 
 
 menuButton.addEventListener("click", displayMenu);
 
-// homeButton.addEventListener("click", displayHome)
+homeButton.addEventListener("click", displayHome);
 
-// contact.addEventListener("click", ()=>{});
-
-console.log();
-
+                
 
 console.log("ODIN");
