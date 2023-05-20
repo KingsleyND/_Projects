@@ -17,7 +17,7 @@ body {
 }
 
 .home-container {
-  background-color: rgb(252, 145, 145);
+  background-color: rgba(255, 166, 0, 0.61);
   width: 60vw;
   display: flex;
   flex-direction: column;
@@ -90,6 +90,10 @@ body {
     margin: 0;
 }
 
+.menu-header{
+    color: white;
+}
+
 .menu-items p{
     color: white;
     padding: 0 10px;
@@ -106,4 +110,34 @@ body {
     width: 150px;
     height: 170px;
 }
+
+/* Contact Tab */
+
+.contact-content{
+    width: 60vw;
+    background-color: rgba(0, 0, 0, 0.452);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-title{
+    color: rgb(199, 199, 199);
+}
+
+.contacts-container{
+    border: 1px solid red;
+    display: flex;
+}
+
+.phone{
+    border: 1px solid greenyellow;
+    margin:10px;
+}
+
+.email{
+    border: 1px solid orange;
+    margin:10px;
+}
+
 
