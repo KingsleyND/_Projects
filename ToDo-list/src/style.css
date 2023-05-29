@@ -1,0 +1,521 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+:root {
+  --navy: #189ab4;
+
+  --pinkk: #f089cf;
+  --lemon: #cff089;
+  --georgiapeach:#F0AA89;
+  --hoverblue: #5cbdea;
+  --babyblue: #89cff0;
+  --bluegreen: #75e6da;
+  --lightblue: #d4f1f4;
+
+  --roboto: "Roboto", sans-serif;
+  --montserrat: "Montserrat", sans-serif;
+}
+
+
+
+.navigation {
+  background-color: var(--babyblue);
+  width: 190px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.navigation ul h1 {
+  padding: 10px;
+}
+
+.navigation ul .projects {
+  margin-top: 20px;
+  padding: 10px 20px;
+  line-height: 30px;
+  font-size: 15px;
+  height: 30px;
+  cursor: alias;
+}
+.navigation ul {
+  background-color: var(--babyblue);
+  color: white;
+  width: 190px;
+  list-style: none;
+  padding-left: 0px;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  transition: 1s;
+}
+
+.navigation ul li {
+  height: 50px;
+  padding-left: 35px;
+  line-height: 50px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+.navigation ul li:hover:not(.projects, .add-project-name) {
+  background-color: #5cbdea;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.navigation .project {
+  margin-top: 10px;
+  padding-bottom: 0;
+  height: 40px;
+  line-height: 50px;
+  font-size: 15px;
+}
+.navigation .add-project{
+margin-top: 10px;
+  padding-bottom: 0;
+  height: 40px;
+  line-height: 50px;
+  font-size: 15px;
+}
+.container {
+  position:re
+  lative;
+  display: flex;
+}
+
+.home-title {
+  padding-left: 70px;
+}
+
+.to-do-list {
+  border: 1px solid brown;
+  border-radius: 9px;
+  padding: 10px;
+  width: 82vw;
+  margin-left: 9px;
+
+  /* change this */
+  height: 900px;
+}
+/* To do list item */
+.to-do-item {
+    height: 70px;
+  padding: 0 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 79vw;
+  display: flex;
+  margin-left: 15px;
+}
+
+.item-title{
+    margin: 8px 0 8px 2px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.item-title-half {
+  
+  width: 67vw;
+}
+.checkbox-priority-half {
+    padding-left: 5px;
+    
+}
+.checkbox-priority-half input {
+  transform : scale(1.5);
+  margin-bottom: 0px;
+  margin-top: 16px;
+  margin-left: 100px;
+  
+}
+
+.checkbox-priority-half p {
+    
+  margin-top: 0px;
+  width: 60px;
+  background-color: var(--pinkk);
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.date-trash {
+  
+  height: 20px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.date-trash p {
+ margin:0;
+}
+.date{
+    margin-left: 30px;
+    
+}
+
+.material-symbols-outlined {
+    color: red;
+    margin:0;
+    font-variation-settings: 
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 48
+}
+.material-symbols-outlined:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.add-to-do{
+    background-color: var(--navy);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--roboto);
+    font-size: 40px;
+    font-weight: 200;
+    border-radius: 50%;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    padding-top:0px;
+    position: fixed;
+    bottom:0;
+    right: 80px;
+    
+
+    transition: 0.5s;
+
+    
+}
+.add-to-do:hover{
+    line-height: 42px;
+    font-size: 42px;
+    height: 42px;
+    width: 42px;
+    margin-bottom: 39px;
+}
+.add-project:hover{
+    font-size:15.5px;
+}
+
+
+
+
+
+
+
+/* Input Modal */
+.input-form{
+    position: fixed;
+    background-color: #e2e1e1;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4px;
+    height: 350px;
+    width: 550px;
+    top: 17%;
+    left:32%;
+    padding:10px;
+    z-index: 2;
+}
+
+.title-input-cancel{
+    display: flex;
+    /* border: 1px solid fuchsia; */
+    height: 30px;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+
+.cancel{
+    margin-left: 20px;
+    cursor: pointer;
+    margin-top: 0;
+    font-size: 40px;
+    color:rgb(86, 60, 231);
+    /* color: rgb(255, 255, 255); */
+    font-weight: 200;
+    /* border: 1px solid teal; */
+    height: 20px;
+    line-height: 7px;
+    font-family: 'Nunito', sans-serif;  
+    transition: 0.2s;
+
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+
+.cancel span{
+    color: rgb(255, 106, 47);
+    font-size: 30px;
+    padding-top: 0;
+}
+
+.cancel:hover{
+    font-size: 42px;
+}
+
+.title-input label{
+    font-weight: 100;
+
+}
+
+.title-input input{
+    width: 470px;
+    height: 25px;
+    border-radius: 3px;
+    border:none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.title-input input:focus {
+    outline: none;
+    border:none;    
+}
+
+.description-container{
+    padding: 10px 10px 0 10px;
+    margin-left: 20px;
+}
+
+.description-container label{
+    font-weight: 100;
+    
+}
+.description-container textarea{
+    width: 471px;
+    height: 166px;
+    border-radius: 3px;
+    margin-top: 2px;
+    border:none;
+    resize: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+}
+
+.description-container textarea:focus{
+    outline: none;
+}
+.date-priority-save-input{
+    margin-top: 20px;
+    border: 1px solid gold;
+    display: flex;
+    justify-content: space-around;
+    gap: 55px;
+    align-items: center;
+}
+
+
+
+
+.dropbtn{
+    background-color: #b1b1b1;
+    border-radius: 7px;
+    color: white;
+    padding: 4px 14px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .project-btn{
+    background-color: #f59c9c;
+    border-radius: 4px;
+    color: white;
+    padding: 4px 14px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .priority-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .projects-container{
+    position: relative;
+    display: inline-block;
+  }
+  .projects-content {
+    display: none;
+    position: absolute;
+    
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .projects-content a {
+    color: black;
+    font-size: 15px;
+    padding: 7px auto;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    font-size: 15px;
+    padding: 7px auto;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:first-child{
+    color: rgb(0, 255, 0);
+  }
+  .dropdown-content a:first-child:hover{
+    background-color: rgb(0,255,0);
+    color:white;
+  }
+  .dropdown-content a:nth-child(2){
+    color: rgb(255, 208, 0);
+  }
+  .dropdown-content a:nth-child(2):hover{
+    background-color: rgb(255, 145, 0);
+    color: white;
+  }
+  .dropdown-content a:nth-child(3){
+    color: red;
+  }
+  .dropdown-content a:nth-child(3):hover{
+    background-color: rgb(255, 37, 37);
+    color: white;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.priority-container p{
+    font-weight: 100;
+    font-size: 15px;
+    margin:2px 0px;
+}
+.projects-container p{
+    font-weight: 100;
+    font-size: 15px;
+    margin:2px 0px;
+}
+  
+  .priority-container:hover .dropdown-content {
+    display: block;
+  }
+  .projects-container:hover .projects-content {
+    display: block;
+  }
+  .projects-container:hover .project-btn{
+    background-color: palevioletred;
+  }
+  .projects-content a:hover{
+    background-color: palevioletred;
+    color:#f1f1f1
+  }
+  
+  .priority-container:hover .dropbtn {
+    background-color: #747474;
+  }
+
+  .save{
+    width: 73px;
+    background-color: var(--navy);
+    color:white;
+    font-family: var(--montserrat);
+    font-size: 16px;
+    border-radius: 0;
+    border: none;
+    padding: 0px 13px;
+    height: 27px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .save:hover{
+    background-color:#137488;
+  }
+
+  .date-input-container label{
+    font-weight: 100;
+  }
+
+  .date-input-container input{
+    cursor:text;
+    border-radius: 0;
+    border: 1px solid #979797;
+    font-family: var(--roboto);
+    font-weight: 300;
+  }
+
+  .date-input-container input:focus{
+    border: none;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+    z-index: 1;
+  }
+
+.enter-project-name{
+    line-height: 1.5;
+    
+}
+.hidden{
+    display:none;
+}
+
+
+
+/* .enter-project-name-hidden{
+    display: none;
+} */
+.enter-project-name:hover{
+    background-color: var(--babyblue);
+}
+
+.enter-project-name label{
+  font-size: 14px;
+}
+
+.enter-project-name input{
+    padding: 0;
+    width: 100px;
+    background-color:var(--babyblue);
+    border: none;
+    border-bottom: 1px solid var(--navy);
+}
+.enter-project-name input:focus{
+    outline: 1px solid rgb(107, 104, 104);
+    background-color: var(--babyblue);
+}
+.enter-project-name button{
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    background-color: var(--navy);
+    color: white;
+}
