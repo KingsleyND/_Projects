@@ -1,5 +1,69 @@
 import "./style.css";
 
+// const tester = document.getElementById("home")
+// tester.addEventListener("click", ()=>{console.log(projects)})
+
+function createToDoItem(title, description, dueDate, priority, complete) {
+    return { title, description, dueDate, priority, complete };
+  }
+  const AllToDoItems = [];
+  
+
+const projectNames = ["Gym", "Work"]
+
+const projects = {}
+
+
+//Add Project
+const addProjectFunc = ()=>{
+    const projectTitleInput = document.getElementById("project-title");
+const newProjectName = projectTitleInput.value;
+    projectNames.push(newProjectName)
+
+    for (let i=0;i<projectNames.length; i+=1){
+        const name = projectNames[i];
+          projects[name] = [];
+        }
+
+    console.log(projects)
+    return newProjectName
+}
+const addProjectDOM = (projectHTMLname)=>{
+    const navList = document.getElementById("nav");
+    const projectLi = document.createElement("li");
+    projectLi.className = "project";
+    projectLi.innerHTML = projectHTMLname;
+
+    navList.insertBefore(projectLi, navList.children[3+projectNames.length])
+}
+
+// for(let i=0; i<projectNameHtmls; i+=1){
+//     console.log(projectNameHtmls[i].innerHTML)
+//     projectNames.push(projectNameHtmls[i].innerHTML);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Add Project Section
@@ -35,7 +99,9 @@ const addProject = () => {
 
 const addNewProject = ()=>{
     addProjectDiv.classList.add("hidden");
-    addProjectText.classList.remove("hidden");
+    addProjectText.classList.remove("hidden")
+
+    addProjectDOM(addProjectFunc())
 }
 
 
