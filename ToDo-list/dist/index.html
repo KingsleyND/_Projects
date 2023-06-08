@@ -87,30 +87,30 @@
     </div>
     <div class="date-priority-save-input">
         <div class="date-input-container">
-            <label for="start">Date</label><br>
-            <input type="date" id="start" name="trip-start"
+            <label for="due-date">Date</label><br>
+            <input type="date" id="due-date" name="trip-start"
                 value="2010-07-22"
                 min="2010-01-01" max="2023-12-31">
         </div>
         <div class="priority-container">
             <p>Priority:</p>
-                <button class="dropbtn">Low</button>
+                <button class="dropbtn" id="priority">Low</button>
                 <div class="dropdown-content">
-                <a href="#">Low</a>
-                <a href="#">Moderate</a>
-                <a href="#">High</a>
+                <a href="#" class="lvl"id="l">Low</a>
+                <a href="#"class="lvl" id="m">Moderate</a>
+                <a href="#"class="lvl" id="h">High</a>
                 </div>
         </div>
         <div class="projects-container">
             <p>Project:</p>
-            <button class="project-btn">Today</button>
+            <button class="project-btn" id="project-btn">Today</button>
             <div class="projects-content"id="project-drpdwn">
-            <a href="#">Gym</a>
-            <a href="#">Work</a>
+            <a  class="proj">Gym</a>
+            <a  class="proj">Work</a>
             </div>
     </div>
 
-        <button class="save">SAVE</button>
+        <button class="save" id="save">SAVE</button>
 
     </div>
 
