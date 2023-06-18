@@ -13,6 +13,7 @@ body {
   --georgiapeach: #f0aa89;
   --hoverblue: #5cbdea;
   --babyblue: #89cff0;
+  --priorityBlue:rgb(24, 92, 180);
   --bluegreen: #75e6da;
   --lightblue: #d4f1f4;
 
@@ -78,12 +79,18 @@ body {
   font-size: 15px;
 }
 .container {
-  position: re lative;
+  position: relative;
   display: flex;
 }
 
 .home-title {
-  padding-left: 70px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.home-date{
+  padding-right: 80px;
+  font-weight: lighter;
 }
 
 .to-do-list {
@@ -109,7 +116,10 @@ body {
   transition: 0.3s;
 }
 .to-do-item:hover {
-  background-color: #dedddd;
+  background-color: #b2b1b1;
+}
+.to-do-item:hover:not(.completed-task) {
+  background-color: #b3d6e8;
 }
 
 .item-title {
@@ -133,8 +143,7 @@ body {
 
 .checkbox-priority-half p {
   margin-top: 0px;
-  width: 60px;
-  background-color: var(--pinkk);
+  width: fit-content;
   border-radius: 5px;
   padding: 2px;
 }
@@ -295,7 +304,7 @@ body {
 }
 
 .dropbtn {
-  background-color: rgb(25, 239, 25);
+  background-color: var(--priorityBlue);  
   border-radius: 7px;
   color: white;
   padding: 4px 14px;
@@ -358,10 +367,10 @@ body {
   display: block;
 }
 .dropdown-content a:first-child {
-  color: rgb(0, 255, 0);
+  color: var(--priorityBlue);
 }
 .dropdown-content a:first-child:hover {
-  background-color: rgb(0, 255, 0);
+  background-color: var(--priorityBlue);
   color: white;
 }
 .dropdown-content a:nth-child(2) {
@@ -495,3 +504,16 @@ body {
   background-color: var(--navy);
   color: white;
 }
+
+.completed-task p{
+
+  text-decoration: line-through;
+
+ 
+}
+
+.priority-completed{
+  background-color: rgb(156, 156, 156);
+  font-size: 40px;
+}
+

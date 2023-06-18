@@ -6,6 +6,7 @@ import {
   selectPriority,
   clearFormInfo,
   selectProject,
+  // App,
 } from "./dom";
 
 // const tester = document.getElementById("home")
@@ -39,22 +40,29 @@ function createTask() {
   const ATask = getTaskInfo()
   
 
-  TaskId += 1;
+  
   return ATask;
 }
-const tester = document.getElementById("home")
-tester.addEventListener("click", ()=>{console.log(createTask())})
+// const tester = document.getElementById("home")
+// tester.addEventListener("click", ()=>{console.log(createTask())})
 
 // Save task object to project 
 function saveTasktoProject(){
  const projectsName=document.getElementById("project-btn").innerHTML
- projects[projectsName] = createTask();
-//  console.log(projects)
-    // First create taskID object
+
+// First create task Object for Home 
+ projects.Home[`task${TaskId}`] = createTask();
+
+    // First create task Object for its project
     // eslint-disable-next-line no-param-reassign
-    // projectsName[`task${TaskId}`] = createTask();
+  projects[projectsName][`task${TaskId}`] = createTask();
     
-    console.log(projects);
+  console.log(projects.Home[`task${TaskId}`].taskTitle);
+
+    createTaskDOM(projects.Home[`task${TaskId}`].taskTitle, projects.Home[`task${TaskId}`].dateValue, projects.Home[`task${TaskId}`].priorityValue);
+
+    TaskId += 1;
+
 
 }
 
@@ -62,6 +70,8 @@ function saveTasktoProject(){
 const addProjectText = document.getElementById("add-project-text");
 const addProjectDiv = document.getElementById("add-project-name");
 const addProjectButton = document.getElementById("add-new-project");
+
+
 
 // To-do Input form
 const inputForm = document.getElementById("input-form");
@@ -91,6 +101,9 @@ const addNewProject = () => {
   addProjectDOM(addProjectFunc(projectNames, projects), projectNames);
 //   add projs to input dropdown
   selectProject();
+
+// 
+
 };
 
 addProjectText.addEventListener("click", addProject);
@@ -105,6 +118,16 @@ const cancelInput = () => {
 
 cancelInputButton.addEventListener("click", cancelInput);
 
+// Add projects to backend initially
+((projectNamesArray,projectsObject)=>{
+  for (let i = 0; i < projectNamesArray.length; i += 1) {
+    const name = projectNamesArray[i];
+    // eslint-disable-next-line no-param-reassign
+    projectsObject[name] = {};
+  }
+})(projectNames,projects)
+
+console.log(projects)
 // Set priority and change bg color
 selectPriority();
 
@@ -113,8 +136,10 @@ selectProject();
 
 
 // Input Save Buttton
-saveButton.addEventListener("click",saveTasktoProject)
+saveButton.addEventListener("click",saveTasktoProject);
+
 
 // adding task to DOM
 createTaskDOM("BAD5", 1994, "Low9");
+
 

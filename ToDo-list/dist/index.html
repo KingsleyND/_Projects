@@ -38,13 +38,13 @@
     </div>
 
     <div class="list-container">
-        <h2 class="home-title">Home</h2>
+        <div class="home-title"><h2 id="home-greeting">Home</h2><h2 class="home-date" id="home-date">Date</h2></div>
 
 
     <div class="to-do-list" id="to-do-list">
 
 
-        <div class="to-do-item">
+        <div class="to-do-item" >
             <div class="item-title-half">
                 <p class="item-title">Title</p>
                 <div class="date-trash">
@@ -56,8 +56,8 @@
             </div>
 
             <div class="checkbox-priority-half">
-                <input type="checkbox">
-                <p>Priority</p>
+                <input type="checkbox" name = "completed" value="on" class="checkbox">
+                <p id="display-priority" >Priority</p>
             </div>
         </div>
 
@@ -89,7 +89,7 @@
         <div class="date-input-container">
             <label for="due-date">Date</label><br>
             <input type="date" id="due-date" name="trip-start"
-                value="2010-07-22"
+                value="2023-01-01"
                 min="2010-01-01" max="2023-12-31">
         </div>
         <div class="priority-container">

@@ -1,12 +1,15 @@
 // Create Project and add to DOM
-
+import {
+  format,
+  parseISO,
+}from "date-fns";
 
 
 // Add Project
 export const addProjectFunc = (projectNamesArray, projectsObject) => {
   const projectTitleInput = document.getElementById("project-title");
   const newProjectName = projectTitleInput.value;
-  console.log(newProjectName);
+  // console.log(newProjectName);
   projectNamesArray.push(newProjectName);
 
   for (let i = 0; i < projectNamesArray.length; i += 1) {
@@ -15,7 +18,8 @@ export const addProjectFunc = (projectNamesArray, projectsObject) => {
     projectsObject[name] = {};
   }
 
-  console.log(projectsObject);
+  // console.log(projectsObject);
+  // console.log("777");
 
   return newProjectName;
 };
@@ -30,7 +34,7 @@ export const addProjectDOM = (projectHTMLname, projectNamesArray) => {
     projectLi,
     navList.children[1 + projectNamesArray.length]
   );
-          
+
   // Add to project dropdown
   const projDropdown = document.getElementById("project-drpdwn");
   const projDropdownName = document.createElement("a");
@@ -42,6 +46,20 @@ export const addProjectDOM = (projectHTMLname, projectNamesArray) => {
   );
   
 };
+
+const strikeThrough=(taskItem,priorityTag,prevBackground)=>{
+  taskItem.classList.toggle("completed-task")
+  if(priorityTag.style.backgroundColor!== "rgb(156, 156, 156)"){
+    priorityTag.style.backgroundColor="rgb(156, 156, 156)";
+  }else if(priorityTag.style.backgroundColor ==="rgb(156, 156, 156)"){
+    priorityTag.style.backgroundColor=prevBackground;
+  }
+  
+}
+// priorityTag.classList.toggle("priority-completed");
+
+
+
 
 // CREATE task and add to DOM
 export const createTaskDOM = (title, dueDate, priority) => {
@@ -72,9 +90,32 @@ export const createTaskDOM = (title, dueDate, priority) => {
   checkboxPriorityDOM.className = "checkbox-priority-half";
   const checkboxInput = document.createElement("input");
   checkboxInput.type = "checkbox";
+  checkboxInput.name = "completed";
+  checkboxInput.value = "on";
+  checkboxInput.className = "checkbox";
+  
+
   checkboxPriorityDOM.appendChild(checkboxInput);
   const priorityHTML = document.createElement("p");
+  priorityHTML.id = "display-priority";
   priorityHTML.innerHTML = priority;
+ switch(priorityHTML.innerHTML){
+  case "Low":
+    priorityHTML.style.backgroundColor= "rgb(24, 92, 180)";
+    priorityHTML.style.color="white";
+    break;
+  case "Moderate":
+    priorityHTML.style.backgroundColor= "rgb(255, 145, 0)";
+    priorityHTML.style.color="white";
+    break;
+  case "High":
+    priorityHTML.style.backgroundColor= "rgb(255, 37, 37)"
+    priorityHTML.style.color="white";
+  // no default      
+}
+const previousBackground = priorityHTML.style.backgroundColor;
+  checkboxInput.addEventListener("click",()=>{strikeThrough(taskContainer,priorityHTML,previousBackground)});
+
   checkboxPriorityDOM.appendChild(priorityHTML);
   taskContainer.appendChild(checkboxPriorityDOM);
 
@@ -87,11 +128,14 @@ const lvls = document.querySelectorAll(".lvl");
 
 function getPriorityStyle(levelText){
     if(levelText === "Low"){
-        priorityDrpdwn.setAttribute("style","background-color: rgb(0,255,0); color:white")
+      priorityDrpdwn.style.backgroundColor= "rgb(24, 92, 180)";
+      priorityDrpdwn.style.color="white";
     }else if(levelText ==="Moderate"){
-        priorityDrpdwn.setAttribute("style","background-color: rgb(255, 145, 0); color:white")
+        priorityDrpdwn.style.backgroundColor= "rgb(255, 145, 0)";
+        priorityDrpdwn.style.color="white";
     }else if(levelText==="High"){
-        priorityDrpdwn.setAttribute("style","background-color: rgb(255, 37, 37); color:white")
+        priorityDrpdwn.style.backgroundColor= "rgb(255, 37, 37)"
+        priorityDrpdwn.style.color="white";
     }
     
 }
@@ -111,42 +155,72 @@ export const selectProject = ()=>{
     const projectDrpdwn = document.getElementById("project-btn");
     const projs = document.querySelectorAll(".proj");
 
-    console.log("9");
     projs.forEach((proj)=>{
         proj.addEventListener("click",()=>{
             projectDrpdwn.innerHTML = proj.innerHTML;
         })
     })
-    
 }
- 
-// function getTaskInfo() {
-//   const taskID = TaskId
-//   // const projectName = projectNameX;
-//   const taskTitle = document.getElementById("title").value;
-//   const taskDescription = document.getElementById("description-input").value;
-//   const dateValue = document.getElementById("due-date").value;
-//   const priorityValue = document.getElementById("priority").innerText;
-//   const projectValue = document.getElementById("project-btn").innerHTML;
-//   const complete = false;
 
-//   return {taskID, taskTitle, taskDescription, dateValue, priorityValue, projectValue, complete}
+// DATES
+const DateNow = new Date()
+const inputDateDisplay = format(DateNow,("yyyy-LL-dd"));
+document.getElementById("due-date").value=inputDateDisplay;
+document.getElementById("home-date").innerHTML=format(DateNow,"E do LLL yyyy");
+
+const greeting = ()=>{
+  const Clock24 = format(DateNow,("H"))
+  let homeGreeting;
+  if(Clock24 >=12 && Clock24<18){
+    homeGreeting= "Good afternoon";
+  }else if(Clock24 >=18 && Clock24 < 24){
+    homeGreeting="Good evening"
+  }else{
+    homeGreeting="Good morning"
+  }
+  return homeGreeting;
+}
+document.getElementById("home-greeting").innerHTML = greeting();
+
+// export const FormatDate = (date)=>{
+//   const todayDate = format(DateNow,"yyyy/mm/dd");
+
+//    return todayDate
 // }
 
-
-// function saveTasktoProject(){
-//     const ${`task`id}
-//     (function(){
-
-//     }())
-
-// }
+const result = parseISO("2014-02-11")
+const displayDate = format(result,"E do LLL yyyy");
+console.log(result);
+console.log(displayDate);
 
 export const clearFormInfo = () => {
   document.getElementById("title").value = "";
   document.getElementById("description-input").value = "";
-  document.getElementById("due-date").value = "2030-07-22";
+  document.getElementById("due-date").value = inputDateDisplay;
   document.getElementById("priority").innerHTML = "Low";
-  document.getElementById("priority").style.backgroundColor="rgb(25, 239, 25)"
+  document.getElementById("priority").style.backgroundColor="rgb(24, 92, 180)"
   document.getElementById("project-btn").innerHTML = "Today";
 };
+
+
+
+// export const FormatDate = ()=>{
+//   const date = new Date();
+
+//   const tomorrow = addDays(date,1)
+
+//   return (console.log(tomorrow))
+// }
+
+
+// switch(priorityHTML.innerHTML){
+//   case "Low":
+//     priorityHTML.setAttribute("style","backgroundColor= rgb(24, 92, 180); color:white")
+//     break;
+//   case "Moderate":
+//     priorityHTML.setAttribute("style","background-color: rgb(255, 145, 0); color:white")
+//     break;
+//   case "High":
+//     priorityHTML.setAttribute("style","background-color: rgb(255, 37, 37); color:white");
+//   // no default      
+// }
