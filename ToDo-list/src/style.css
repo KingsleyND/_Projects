@@ -28,6 +28,7 @@ body {
 }
 .navigation ul h1 {
   padding: 10px;
+  font-weight: 500;
 }
 
 .navigation ul .projects {
@@ -116,7 +117,7 @@ body {
   transition: 0.3s;
 }
 .to-do-item:hover {
-  background-color: #b2b1b1;
+  background-color: #8c8b8b;
 }
 .to-do-item:hover:not(.completed-task) {
   background-color: #b3d6e8;
@@ -503,6 +504,9 @@ body {
   cursor: pointer;
   background-color: var(--navy);
   color: white;
+}
+.completed-task{
+  background-color:#b2b1b1;
 }
 
 .completed-task p{

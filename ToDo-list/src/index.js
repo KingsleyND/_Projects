@@ -6,6 +6,8 @@ import {
   selectPriority,
   clearFormInfo,
   selectProject,
+  isToday,
+  displayProjectTasks,
   // App,
 } from "./dom";
 
@@ -43,17 +45,21 @@ function createTask() {
   
   return ATask;
 }
-// const tester = document.getElementById("home")
-// tester.addEventListener("click", ()=>{console.log(createTask())})
 
 // Save task object to project 
 function saveTasktoProject(){
  const projectsName=document.getElementById("project-btn").innerHTML
 
-// First create task Object for Home 
+// First create task Object and put in Home object
  projects.Home[`task${TaskId}`] = createTask();
 
-    // First create task Object for its project
+// next create task object and put in Today project object
+// const taskDate = projects.Home[`task${TaskId}`].dateValue
+
+if(isToday(projects.Home[`task${TaskId}`].dateValue)===true){
+  projects.Today[`task${TaskId}`] = createTask();
+}
+    // create task Object for its project
     // eslint-disable-next-line no-param-reassign
   projects[projectsName][`task${TaskId}`] = createTask();
     
@@ -63,6 +69,7 @@ function saveTasktoProject(){
 
     TaskId += 1;
 
+    console.log(projects)
 
 }
 
@@ -94,16 +101,30 @@ const addProject = () => {
   addProjectDiv.classList.remove("hidden");
 };
 
-const addNewProject = () => {
-  addProjectDiv.classList.add("hidden");
-  addProjectText.classList.remove("hidden");
+// Function to add listener and displayFunction to each project on Nav
+// Project Nav Displays
+const getProjectList =()=>{
+  const DOMProjects = document.querySelectorAll(".project")
+  for (let i=0; i<DOMProjects.length;i+=1){
+   const projectNameDOM =  DOMProjects[i].innerHTML
+    DOMProjects[i].addEventListener("click",()=>displayProjectTasks(projects,projectNameDOM))
+  }
+  console.log("added");
 
-  addProjectDOM(addProjectFunc(projectNames, projects), projectNames);
-//   add projs to input dropdown
-  selectProject();
+  }
 
-// 
+  const addNewProject = () => {
+    addProjectDiv.classList.add("hidden");
+    addProjectText.classList.remove("hidden");
 
+    addProjectDOM(addProjectFunc(projectNames, projects), projectNames);
+  //   add projs to input dropdown
+    selectProject();
+
+  // add project to Nav function
+  
+  getProjectList();
+  
 };
 
 addProjectText.addEventListener("click", addProject);
@@ -127,7 +148,7 @@ cancelInputButton.addEventListener("click", cancelInput);
   }
 })(projectNames,projects)
 
-console.log(projects)
+
 // Set priority and change bg color
 selectPriority();
 
@@ -142,4 +163,13 @@ saveButton.addEventListener("click",saveTasktoProject);
 // adding task to DOM
 createTaskDOM("BAD5", 1994, "Low9");
 
+// // Project Nav Displays
+// // make this a function so it gets all the projects list after each project save 
+// const getProjectList =()=>{
+// const DOMProjects = document.querySelectorAll(".project")
+// for (let i=0; i<DOMProjects.length;i+=1){
+//  const projectNameDOM =  DOMProjects[i].innerHTML
+//   DOMProjects[i].addEventListener("click",()=>displayProjectTasks(projects,projectNameDOM))
+// }
+// }
 

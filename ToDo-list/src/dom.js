@@ -14,10 +14,11 @@ export const addProjectFunc = (projectNamesArray, projectsObject) => {
 
   for (let i = 0; i < projectNamesArray.length; i += 1) {
     const name = projectNamesArray[i];
+    if (projectsObject[name]=== undefined){
     // eslint-disable-next-line no-param-reassign
     projectsObject[name] = {};
   }
-
+}
   // console.log(projectsObject);
   // console.log("777");
 
@@ -28,6 +29,7 @@ export const addProjectDOM = (projectHTMLname, projectNamesArray) => {
   const navList = document.getElementById("nav");
   const projectLi = document.createElement("li");
   projectLi.className = "project";
+  projectLi.id = projectHTMLname;
   projectLi.innerHTML = projectHTMLname;
 
   navList.insertBefore(
@@ -50,8 +52,10 @@ export const addProjectDOM = (projectHTMLname, projectNamesArray) => {
 const strikeThrough=(taskItem,priorityTag,prevBackground)=>{
   taskItem.classList.toggle("completed-task")
   if(priorityTag.style.backgroundColor!== "rgb(156, 156, 156)"){
+    // eslint-disable-next-line no-param-reassign
     priorityTag.style.backgroundColor="rgb(156, 156, 156)";
   }else if(priorityTag.style.backgroundColor ==="rgb(156, 156, 156)"){
+    // eslint-disable-next-line no-param-reassign
     priorityTag.style.backgroundColor=prevBackground;
   }
   
@@ -162,6 +166,34 @@ export const selectProject = ()=>{
     })
 }
 
+// Function for displaying specific project tasks
+export const displayProjectTasks= (allProjects,projectDomName)=>{
+  const tesde = projectDomName;
+  const tasksOnDisplay = document.querySelectorAll(".to-do-item")
+  // for removing currently displayed tasks
+  tasksOnDisplay.forEach((taskOnDisplay)=>{
+    taskOnDisplay.remove();
+  })
+  // FUnction for adding specific tasks to dom
+  const singledProject = allProjects[projectDomName]
+  for(let i=0; i<Object.keys(singledProject).length; i+=1){
+    const TaskObject = Object.values(singledProject)[i]
+    createTaskDOM(TaskObject.taskTitle,TaskObject.dateValue,TaskObject.priorityValue)
+    console.log(singledProject);
+  }
+
+  console.log(projectDomName)
+}
+
+
+
+
+
+
+
+
+
+
 // DATES
 const DateNow = new Date()
 const inputDateDisplay = format(DateNow,("yyyy-LL-dd"));
@@ -172,7 +204,7 @@ const greeting = ()=>{
   const Clock24 = format(DateNow,("H"))
   let homeGreeting;
   if(Clock24 >=12 && Clock24<18){
-    homeGreeting= "Good afternoon";
+    homeGreeting= "Good afternoon";      
   }else if(Clock24 >=18 && Clock24 < 24){
     homeGreeting="Good evening"
   }else{
@@ -190,8 +222,20 @@ document.getElementById("home-greeting").innerHTML = greeting();
 
 const result = parseISO("2014-02-11")
 const displayDate = format(result,"E do LLL yyyy");
-console.log(result);
-console.log(displayDate);
+// console.log(result);
+// console.log(displayDate);
+export const isToday =(dateString)=>{
+  const dateStr = format(parseISO(dateString),"yyyy-MM-dd")
+  console.log(dateStr)
+  const todayStr = format(DateNow,"yyyy-MM-dd")
+  console.log(todayStr)
+  const isTodayDate=(dateStr === todayStr);
+
+  console.log(isTodayDate);
+  return isTodayDate;
+}
+
+
 
 export const clearFormInfo = () => {
   document.getElementById("title").value = "";
