@@ -8,8 +8,30 @@
     <title>Document</title>
 </head>
 <body>
-    
-    
+        <h1 class="header">Le Weather</h1>
+
+    <button class="current-location"> Use current Location</button>
+     
+        <form class="input-form" onsubmit="getData();return false;">
+            <label for="location-input" class="location-input">Enter Location:</label>
+             <input class="input-box" id="location-input" type="text">
+            <input type="submit" id="submit" class="submit" value="Submit">
+        </form>
+
+        <div class="weather-content">
+            <h2 class="location-title"><span class="place-title" id="place-title">Country</span><span class="time" id="time">2:53</span></h2>
+
+            
+                
+                <h2 class="condition"><span class="degree" id="degree">99</span><span class="celsius">°C</span><span id="condition">Alright</span><img class="icon" id="icon"></h2>
+
+                <img class="weather-gif" id="weather-gif">
+                
+            
+
+        </div>
+
+
 
     <script src="app.js"></script>
 </body>
