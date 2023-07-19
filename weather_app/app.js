@@ -3,7 +3,7 @@
 
 const today = new Date();
 const date = `${today.getFullYear()}-${today.getMonth()+1} ${today.getDate()}`;
-
+let locationInput;
 
 const get12hTime = (time24h)=>{
     const hours = time24h.split(":")[0];
@@ -51,10 +51,10 @@ async function getWeather(place){
     return{location, placeCondition, conditionIcon, weatherData, degree, locationTime}
 }
 
-async function getData(){
-    const locationInput = document.getElementById("location-input").value
-    const weatherPlace = getWeather(locationInput);
-    
+async function getData(placeNameOrCoordinates){
+    // const locationInput = document.getElementById("location-input").value
+
+    const weatherPlace = getWeather(placeNameOrCoordinates);
     const placeText = document.getElementById("place-title");
     placeText.innerText = (await weatherPlace).location
     const locationTime = document.getElementById("time");
@@ -69,15 +69,51 @@ async function getData(){
     weatherGif.src = (await fetchGif(`${(await weatherPlace).placeCondition} weather`));
     
     console.log((await weatherPlace).conditionIcon)
-    console.log((await weatherPlace).weatherData)
 }
 
-// getData()
-
-
-
-
-
-function test(){
-    return console.log("FLEXUP")
+ function displayWeather(){
+    locationInput =  document.getElementById("location-input").value
+     getData(locationInput);
+    // console.log(locationInput)
 }
+
+
+  // Display current location weather      
+const getCoordinates = ()=>{
+
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+      
+      function success(pos) {
+        document.getElementById("location-input").value = "";
+        const crd = pos.coords;
+        
+         const coordinates = `${crd.latitude},${crd.longitude}`
+        
+         locationInput =  coordinates;
+            getData(locationInput);
+      }
+      
+      function error(err) {
+        // console.warn(`ERROR(${err.code}): ${err.message}`);
+          alert("You denied location access");
+          
+      }
+      
+     navigator.geolocation.getCurrentPosition(success, error, options);
+    
+    
+    }
+
+
+
+const currentLocationBtn = document.getElementById("current-location");
+currentLocationBtn.addEventListener("click",getCoordinates)
+
+
+
+
+

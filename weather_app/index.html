@@ -10,9 +10,9 @@
 <body>
         <h1 class="header">Le Weather</h1>
 
-    <button class="current-location"> Use current Location</button>
+    <button class="current-location" id="current-location"> Use current Location</button>
      
-        <form class="input-form" onsubmit="getData();return false;">
+        <form class="input-form" onsubmit="displayWeather();return false;">
             <label for="location-input" class="location-input">Enter Location:</label>
              <input class="input-box" id="location-input" type="text" autocomplete="off">
             <input type="submit" id="submit" class="submit" value="Submit">
