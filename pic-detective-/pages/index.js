@@ -58,9 +58,12 @@ export default function Home() {
    * @description Triggers when the main form is submitted
    */
 
-  async function handleOnSubmit(event) {
-    event.preventDefault();
+  
 
+  async function handleOnSubmit(event) {
+    var imageSection = document.getElementById("imageSection");
+    imageSection.style.display = "none";
+    event.preventDefault();
     const data = await fetch("/api/upload", {
       method: "POST",
       body: JSON.stringify({
@@ -72,14 +75,23 @@ export default function Home() {
     setUploadData(data);
 
     alert("Uploaded")
+    
     // console.log("data:", data)
   }
 
   useEffect(()=>{
+
   var searchBox = document.getElementById("searchBox")
+  var searchBtn = document.getElementById("searchButton");
+  var imageSection = document.getElementById("imageSection");
+  searchBtn.addEventListener("click", ()=>{
+    imageSection.style.display = "none";
+  })
   searchBox.addEventListener("keypress", function(event){
     if (event.key === "Enter"){
       event.preventDefault();
+      // var imageSection = document.getElementById("imageSection");
+    imageSection.style.display = "none";
       document.getElementById("searchButton").click()
     }
   })
@@ -101,7 +113,7 @@ export default function Home() {
        
         <div className={styles.searchDiv}>
           <input id='searchBox' className={styles.searchBox} type='text' ></input>          
-          <button onClick={()=>setActiveTag(searchBox.value)} className={styles.searchButton} id='searchButton'><img src={"/icons8-search-white.svg"}/></button>
+          <button onClick={()=>setActiveTag(searchBox.value) } className={styles.searchButton} id='searchButton'><img src={"/icons8-search-white.svg"}/></button>
         </div>
 
             <div className={styles.uploadSection}>

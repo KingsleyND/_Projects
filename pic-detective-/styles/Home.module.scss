@@ -6,6 +6,10 @@
   padding: 0 2rem;
   margin: 0 auto;
 }
+#__next{
+  background-color: rgb(145, 98, 145);
+
+}
 
 .main {
   display: flex;
@@ -14,6 +18,7 @@
   align-items: center;
   text-align: center;
   padding: 2rem 0;
+  
 }
 
 .title {
@@ -124,4 +129,9 @@ display:flex;
   height: 500px;
   border: 3px dotted grey;
   border-radius: 30px;
+}
+
+.imageSection h2{
+  margin-top: 20px;
+  color: grey;
 }
