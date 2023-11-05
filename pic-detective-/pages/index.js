@@ -21,7 +21,7 @@ export default function Home() {
 
   const [images, setImages] = useState();
 
-  // These is where the image url will be after  clicking on a tag and console logging. (i console.logged all the image info from search tag)
+  // These is where the image url will be after  clicking on a tag and console logging. (i console.logged all the image info from search text)
   console.log("images", images)
 
   useEffect(()=>{
@@ -71,8 +71,19 @@ export default function Home() {
     setImageSrc(data.secure_url);
     setUploadData(data);
 
+    alert("Uploaded")
     // console.log("data:", data)
   }
+
+  useEffect(()=>{
+  var searchBox = document.getElementById("searchBox")
+  searchBox.addEventListener("keypress", function(event){
+    if (event.key === "Enter"){
+      event.preventDefault();
+      document.getElementById("searchButton").click()
+    }
+  })
+})
 
   return (
     <div className={styles.container}>
@@ -87,27 +98,10 @@ export default function Home() {
           Pic Detective <img className={styles.detectiveIcon} src={"/d111.png"}alt="image not found" />
         </h1>
 
-        {Array.isArray(tags) && (
-          <ul style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            listStyle: 'none',
-            padding: 0,
-            margin: 0
-          }}>
-            { tags.map(tag => {
-              return (
-                <li key={tag} style={{ margin: '.5em' }}>
-                  <button onClick={()=>setActiveTag(tag)} >{ tag }</button>
-                </li>
-              )
-            })}
-          </ul>
-        )}
-        <div>
-          <input id='searchBox' className={styles.searchBox} type='text'></input>          
-          <button onClick={()=>setActiveTag(searchBox.value)} className={styles.searchButton}><img src={"/icons8-search-white.svg"}/></button>
+       
+        <div className={styles.searchDiv}>
+          <input id='searchBox' className={styles.searchBox} type='text' ></input>          
+          <button onClick={()=>setActiveTag(searchBox.value)} className={styles.searchButton} id='searchButton'><img src={"/icons8-search-white.svg"}/></button>
         </div>
 
             <div className={styles.uploadSection}>
@@ -125,19 +119,25 @@ export default function Home() {
             </label>
           </p>
           
-          <img src={imageSrc} />
+          
           
           {imageSrc && !uploadData && (
             <p>
-              <button>Upload Files</button>
+              <button>Upload Images</button>
             </p>
           )}
+          <img src={imageSrc} />
 
-          {uploadData && (
+          {/* {uploadData && (
             <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
-          )}
+          )} */}
         </form>
         </div>
+        <div className={styles.imageSection} id='imageSection'>
+          <h2>Your images appear here</h2>
+        </div>
+
+
         {/* creating unordered list with image results */}
       {Array.isArray(images) && (
           <ul style={{
